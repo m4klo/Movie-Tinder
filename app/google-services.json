@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "116884493970",
+    "project_id": "movie-tinder-f5289",
+    "storage_bucket": "movie-tinder-f5289.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116884493970:android:b076212b9cd0fd4ec4384b",
+        "android_client_info": {
+          "package_name": "com.example.tinder_movie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116884493970-3e9mddibaf3g2kkf0e9f8qrjeir5a6ho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tinder_movie",
+            "certificate_hash": "42116fd672ed62d47d6f39cd24410c8e936c66bb"
+          }
+        },
+        {
+          "client_id": "116884493970-8jf8ppaj3f98m6feutpabvga4rmcc367.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-IUpnFTSHKnHUAwxmfi5jL5qwWfBqF40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116884493970-8jf8ppaj3f98m6feutpabvga4rmcc367.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
