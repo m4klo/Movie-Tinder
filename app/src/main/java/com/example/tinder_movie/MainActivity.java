@@ -1,19 +1,18 @@
 package com.example.tinder_movie;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.*;
-
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -22,37 +21,10 @@ public class MainActivity extends Activity {
     private ArrayList<String> al;
     private ArrayAdapter<String> arrayAdapter;
     private int i;
-    private static HttpURLConnection connection;
 
-    public static void http() throws IOException {
+    String API_URL  = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=1";
 
-        BufferedReader reader;
-        String line;
-        StringBuffer responseContent = new StringBuffer();
-
-
-        String url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=1";
-
-        URL obj = new URL(url);
-        connection = (HttpURLConnection) obj.openConnection();
-
-        connection.setRequestMethod("GET");
-
-        connection.setRequestProperty("X-RapidAPI-Host", "unogs-unogs-v1.p.rapidapi.com");
-        connection.setRequestProperty("X-RapidAPI-Key", "ae7b155a09msh17af395a573014dp1dc75bjsn7cb2bcd9773b");
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
-
-        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        while((line=reader.readLine())!= null) {
-            responseContent.append(line);
-        }
-        reader.close();
-
-        System.out.println(responseContent.toString());
-    }
-
-  //  public static String parse(String responseBody) {
+    //  public static String parse(String responseBody) {
   //      JSONArray albums = new JSONArray(responseBody);
    //     for(int i=0; i<albums.length(); i++)
    //     {
@@ -62,17 +34,58 @@ public class MainActivity extends Activity {
    //     }
 
   //  }
+  public class syncData extends AsyncTask<String, String, String> {
+
+      private Object URL;
+
+      @Override
+      protected void onPreExecute() {
+          super.onPreExecute();
+      }
+
+      @Override
+      protected String doInBackground(String... strings) {
+          StringBuilder builder = new StringBuilder();
+
+          try {
+              URL=new URL(API_URL);
+              URL url = new URL(API_URL);
+              HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+              connection.setRequestMethod("GET");
+              connection.setRequestProperty("X-RapidAPI-Host", "unogs-unogs-v1.p.rapidapi.com");
+              connection.setRequestProperty("X-RapidAPI-Key", "ae7b155a09msh17af395a573014dp1dc75bjsn7cb2bcd9773b");
+              connection.setConnectTimeout(5000);
+              connection.setReadTimeout(5000);
+
+              BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+              while(true)
+              {
+                  String readLine = reader.readLine();
+
+                  String data = readLine;
+
+                  if(data == null)
+                  {
+                      break;
+                  }
+                  builder.append(data);
+              }
+          }
+          catch (Exception e) {
+              e.printStackTrace();
+          }
+          return builder.toString();
+      }
+
+  }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            http();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new syncData().execute();
 
         al = new ArrayList<>();
         al.add("Apocalypse Now");
@@ -129,7 +142,8 @@ public class MainActivity extends Activity {
             }
         });
 
-    }
+        }
+
 
 
 }
