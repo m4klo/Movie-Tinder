@@ -1,29 +1,40 @@
 package com.example.tinder_movie;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 public class ChooseLoginRegistrationActivity extends AppCompatActivity {
 
+    private Button mLogin, mRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_login_registration);
 
-        Button mLogin = findViewById(R.id.login);
-        Button mRegister = findViewById(R.id.register);
+        mLogin = (Button) findViewById(R.id.login);
+        mRegister = (Button) findViewById(R.id.register);
 
-        mLogin.setOnClickListener(view -> {
-            Intent intent = new Intent(ChooseLoginRegistrationActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+        mLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChooseLoginRegistrationActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
         });
-        mRegister.setOnClickListener(view -> {
-            Intent intent = new Intent(ChooseLoginRegistrationActivity.this, RegistrationActivity.class);
-            startActivity(intent);
-            finish();
+        mRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChooseLoginRegistrationActivity.this, RegistrationActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
         });
     }
 }
