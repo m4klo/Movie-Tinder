@@ -2,6 +2,7 @@ package com.example.tinder_movie;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,6 +14,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -54,8 +58,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.makeText(RegistrationActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
                 }else{
                     String userId = mAuth.getCurrentUser().getUid();
-                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
-                    currentUserDb.setValue(userId);
+                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users").child(userId);
+                    currentUserDb.setValue("");
                 }
 
             });
@@ -70,6 +74,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+
         mAuth.removeAuthStateListener(firebaseAuthStateListener);
     }
 }
