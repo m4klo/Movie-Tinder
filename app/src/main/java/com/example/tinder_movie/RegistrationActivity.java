@@ -11,10 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegistrationActivity extends AppCompatActivity {
 
+    private Button mRegister;
     private EditText mEmail, mPassword;
 
     private FirebaseAuth mAuth;
@@ -49,6 +52,10 @@ public class RegistrationActivity extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegistrationActivity.this, task -> {
                 if(!task.isSuccessful()){
                     Toast.makeText(RegistrationActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                }else{
+                    String userId = mAuth.getCurrentUser().getUid();
+                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+                    currentUserDb.setValue(userId);
                 }
 
             });

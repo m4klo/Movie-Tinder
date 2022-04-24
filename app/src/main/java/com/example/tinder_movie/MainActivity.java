@@ -2,12 +2,17 @@ package com.example.tinder_movie;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import org.json.JSONArray;
@@ -28,8 +33,25 @@ public class MainActivity extends Activity {
     ProgressDialog progressDialog;
     private arrayAdapter arrayAdapter;
 
+    private FirebaseAuth mAuth;
+
+    private String CurrentUId;
+
+    private DatabaseReference usersDb;
+
     ListView listView;
     List<movies> rowitems;
+
+    public MainActivity() {
+    }
+
+    public void loguoutUser(View view) {
+        mAuth.signOut();
+        Intent intent = new Intent (MainActivity.this, ChooseLoginRegistrationActivity.class);
+        startActivity(intent);
+        finish();
+        return;
+    }
 
     public class syncData extends AsyncTask<String, String, String> {
 
@@ -103,6 +125,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        usersDb = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        mAuth = FirebaseAuth.getInstance();
+        CurrentUId = mAuth.getCurrentUser().getUid();
+
         rowitems = new ArrayList<movies>();
         new syncData().execute();
         movies movie=new movies();
