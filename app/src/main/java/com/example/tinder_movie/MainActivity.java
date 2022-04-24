@@ -1,46 +1,48 @@
 package com.example.tinder_movie;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends Activity {
 
-    private ArrayList<String> al;
-    private ArrayAdapter<String> arrayAdapter;
-    private int i;
+    String API_URL  = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=50";
+    ProgressDialog progressDialog;
+    private arrayAdapter arrayAdapter;
 
-    String API_URL  = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=1";
+    ListView listView;
+    List<movies> rowitems;
 
-    //  public static String parse(String responseBody) {
-  //      JSONArray albums = new JSONArray(responseBody);
-   //     for(int i=0; i<albums.length(); i++)
-   //     {
-  //          JSONObject album =albums.getJSONObject(i);
-   //         String title= album.getString("title");
-   //         System.out.println(title);
-   //     }
+    public class syncData extends AsyncTask<String, String, String> {
 
-  //  }
-  public class syncData extends AsyncTask<String, String, String> {
+        private String data;
 
-      private Object URL;
 
       @Override
       protected void onPreExecute() {
           super.onPreExecute();
+          progressDialog = new ProgressDialog(MainActivity.this);
+          progressDialog.setMessage("Please Wait");
+          progressDialog.setCancelable(false);
+          progressDialog.show();
       }
 
       @Override
@@ -48,7 +50,6 @@ public class MainActivity extends Activity {
           StringBuilder builder = new StringBuilder();
 
           try {
-              URL=new URL(API_URL);
               URL url = new URL(API_URL);
               HttpURLConnection connection = (HttpURLConnection) url.openConnection();
               connection.setRequestMethod("GET");
@@ -78,27 +79,36 @@ public class MainActivity extends Activity {
           return builder.toString();
       }
 
+      @Override
+      protected void onPostExecute(String s) {
+          super.onPostExecute(s);
+          progressDialog.dismiss();
+          try {
+              JSONObject jsonObject = new JSONObject(s);
+              JSONArray jsonArray;
+              jsonArray = jsonObject.getJSONArray("results");
+              for (int i = 0; i < jsonArray.length(); i++) {
+                  movies movie = new movies();
+                  JSONObject results = jsonArray.getJSONObject(i);
+                  movie.setTitle(results.getString("title"));
+                  rowitems.add(movie);
+              }
+          } catch(JSONException e){
+              e.printStackTrace();
+          }
+      }
   }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        rowitems = new ArrayList<movies>();
         new syncData().execute();
-
-        al = new ArrayList<>();
-        al.add("Apocalypse Now");
-        al.add("Saving Private Ryan");
-        al.add("Pirates of the Carribean");
-        al.add("Twiligth");
-        al.add("Harry Potter");
-        al.add("Matrix");
-        al.add("Forest Gump");
-        al.add("");
-
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
-
+        movies movie=new movies();
+        movie.setTitle("chuj");
+        rowitems.add(movie);
+        arrayAdapter = new arrayAdapter(this, R.layout.item, rowitems);
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
@@ -106,7 +116,7 @@ public class MainActivity extends Activity {
             @Override
             public void removeFirstObjectInAdapter() {
                 Log.d("LIST", "removed object!");
-                al.remove(0);
+                rowitems.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
 
@@ -122,10 +132,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                al.add("XML ".concat(String.valueOf(i)));
-                arrayAdapter.notifyDataSetChanged();
-                Log.d("LIST", "notified");
-                i++;
+
             }
 
             @Override
