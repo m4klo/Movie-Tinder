@@ -4,7 +4,7 @@ public class movies {
 
     private String title;
 
-    Integer NetflixId;
+    private String NetflixId;
 
 
     public void setTitle(String title) {
@@ -18,11 +18,11 @@ public class movies {
     public movies(){
     }
 
-    public Integer getNetflixId() {
+    public String getNetflixId() {
         return NetflixId;
     }
 
-    public void setNetflixId(Integer netflixId) {
-        NetflixId = netflixId;
+    public void setNetflixId(String netflixId) {
+        this.NetflixId = netflixId;
     }
 }
