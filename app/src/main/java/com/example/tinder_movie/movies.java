@@ -4,6 +4,8 @@ public class movies {
 
     private String title;
 
+    Integer NetflixId;
+
 
     public void setTitle(String title) {
         this.title = title;
@@ -14,5 +16,13 @@ public class movies {
     }
 
     public movies(){
+    }
+
+    public Integer getNetflixId() {
+        return NetflixId;
+    }
+
+    public void setNetflixId(Integer netflixId) {
+        NetflixId = netflixId;
     }
 }

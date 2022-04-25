@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    String API_URL  = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=50";
+    String API_URL  = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=100";
     ProgressDialog progressDialog;
     private arrayAdapter arrayAdapter;
 
@@ -113,6 +113,7 @@ public class MainActivity extends Activity {
                   movies movie = new movies();
                   JSONObject results = jsonArray.getJSONObject(i);
                   movie.setTitle(results.getString("title"));
+                  movie.setNetflixId(results.getInt("netflix_id"));
                   rowitems.add(movie);
               }
           } catch(JSONException e){
@@ -134,7 +135,7 @@ public class MainActivity extends Activity {
         rowitems = new ArrayList<movies>();
         new syncData().execute();
         movies movie=new movies();
-        movie.setTitle("chuj");
+        movie.setTitle("Swipe left or right");
         rowitems.add(movie);
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowitems);
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
@@ -150,6 +151,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
+
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
             }
 
