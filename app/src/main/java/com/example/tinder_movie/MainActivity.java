@@ -1,7 +1,6 @@
 package com.example.tinder_movie;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -25,12 +24,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends Activity {
 
-    String API_URL  = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=100";
+    String API_URL  = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=50";
     ProgressDialog progressDialog;
     private arrayAdapter arrayAdapter;
 
@@ -55,6 +56,8 @@ public class MainActivity extends Activity {
     }
     public void openLibrary(View view) {
         Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        startActivity(intent);
+        finish();
         return;
     }
 
@@ -140,7 +143,8 @@ public class MainActivity extends Activity {
         rowitems = new ArrayList<movies>();
         new syncData().execute();
         movies movie=new movies();
-        movie.setTitle("Swipe left or right");
+        movie.setTitle("Swipe left or right!");
+        movie.setNetflixId("0");
         rowitems.add(movie);
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowitems);
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
@@ -150,19 +154,33 @@ public class MainActivity extends Activity {
             @Override
             public void removeFirstObjectInAdapter() {
                 Log.d("LIST", "removed object!");
-                rowitems.remove(0);
                 arrayAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+                String netflixid = rowitems.get(0).getNetflixId();
+                String title = rowitems.get(0).getTitle();
+                DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left").child(title);
+                Map movieInfo = new HashMap<>();
+                movieInfo.put("title", title);
+                movieInfo.put("netflixid", netflixid);
+                currentUserDb.updateChildren(movieInfo);
+                rowitems.remove(0);
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
+                String netflixid = rowitems.get(0).getNetflixId();
+                String title = rowitems.get(0).getTitle();
+                DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right").child(title);
+                Map movieInfo = new HashMap<>();
+                movieInfo.put("title", title);
+                movieInfo.put("netflixid", netflixid);
+                currentUserDb.updateChildren(movieInfo);
+                rowitems.remove(0);
             }
 
             @Override
