@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
           StringBuilder builder = new StringBuilder();
 
           try {
-              URL url = new URL(API_URL);
+              URL url = new URL(GenreActivity.getURL());
               HttpURLConnection connection = (HttpURLConnection) url.openConnection();
               connection.setRequestMethod("GET");
               connection.setRequestProperty("X-RapidAPI-Host", "unogs-unogs-v1.p.rapidapi.com");

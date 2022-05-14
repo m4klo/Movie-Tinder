@@ -11,19 +11,25 @@
     android:text="Signout"
     android:onClick="logoutUser"/>
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:translationX="300dp"
-    android:text="Favourite"
-    android:onClick="openLibrary"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openLibrary"
+        android:text="Favourite"
+        android:translationX="300dp"
+        tools:layout_editor_absoluteX="295dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/frame"
-        android:background="#ffeee9e2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="68dp"
+        android:background="#ffeee9e2"
+        android:rotationX="0"
+        app:layout_constraintTop_toTopOf="parent"
         app:rotation_degrees="15.5"
-        tools:context=".MyActivity" />
+        tools:context=".MyActivity"
+        tools:layout_editor_absoluteX="-76dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

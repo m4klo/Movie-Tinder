@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="100dp"
+        android:text="Fantasy"
+        android:onClick="fantasy"
+        android:id="@+id/fantasy"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="200dp"
+        android:text="Sci-fi"
+        android:onClick="sci-fi"
+        android:id="@+id/sci_fi"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="300dp"
+        android:text="Horror"
+        android:onClick="horror"
+        android:id="@+id/horror"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/macie/StudioProjects/Movie-Tinder/app/src/main/res/layout/activity_choose_login_registration.xml" value="0.1" />
-        <entry key="..\:/Users/macie/StudioProjects/Movie-Tinder/app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/macie/StudioProjects/Movie-Tinder/app/src/main/res/layout/activity_genre.xml" value="0.10192147034252297" />
+        <entry key="..\:/Users/macie/StudioProjects/Movie-Tinder/app/src/main/res/layout/activity_list.xml" value="0.1" />
+        <entry key="..\:/Users/macie/StudioProjects/Movie-Tinder/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/macie/StudioProjects/Movie-Tinder/app/src/main/res/layout/item.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/misio/AndroidStudioProjects/TinderMovie/app/src/main/res/layout/activity_choose_login_registration.xml" value="0.1" />
         <entry key="..\:/Users/misio/AndroidStudioProjects/TinderMovie/app/src/main/res/layout/activity_login.xml" value="0.22735507246376813" />
@@ -12,8 +14,6 @@
         <entry key="..\:/Users/misio/AndroidStudioProjects/TinderMovie/app/src/main/res/layout/activity_registration.xml" value="0.1" />
         <entry key="..\:/Users/misio/AndroidStudioProjects/TinderMovie/app/src/main/res/layout/item.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/misio/AndroidStudioProjects/TinderMovie/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1855" />
-        <entry key="..\:/Users/misio/StudioProjects/Movie-Tinder/app/src/main/res/layout/activity_list.xml" value="0.27943840579710144" />
-        <entry key="..\:/Users/misio/StudioProjects/Movie-Tinder/app/src/main/res/layout/activity_main.xml" value="0.27943840579710144" />
       </map>
     </option>
   </component>
@@ -22,5 +22,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>
