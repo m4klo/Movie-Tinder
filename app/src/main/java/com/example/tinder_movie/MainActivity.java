@@ -162,11 +162,13 @@ public class MainActivity extends Activity {
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
                 String netflixid = rowitems.get(0).getNetflixId();
                 String title = rowitems.get(0).getTitle();
-                DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left").child(title);
-                Map movieInfo = new HashMap<>();
-                movieInfo.put("title", title);
-                movieInfo.put("netflixid", netflixid);
-                currentUserDb.updateChildren(movieInfo);
+                if(!title.contains("#")) {
+                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left").child(title);
+                    Map movieInfo = new HashMap<>();
+                    movieInfo.put("title", title);
+                    movieInfo.put("netflixid", netflixid);
+                    currentUserDb.updateChildren(movieInfo);
+                }
                 rowitems.remove(0);
             }
 
@@ -175,11 +177,13 @@ public class MainActivity extends Activity {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
                 String netflixid = rowitems.get(0).getNetflixId();
                 String title = rowitems.get(0).getTitle();
-                DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right").child(title);
-                Map movieInfo = new HashMap<>();
-                movieInfo.put("title", title);
-                movieInfo.put("netflixid", netflixid);
-                currentUserDb.updateChildren(movieInfo);
+                if(!title.contains("#")) {
+                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right").child(title);
+                    Map movieInfo = new HashMap<>();
+                    movieInfo.put("title", title);
+                    movieInfo.put("netflixid", netflixid);
+                    currentUserDb.updateChildren(movieInfo);
+                }
                 rowitems.remove(0);
             }
 

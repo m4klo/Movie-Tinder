@@ -33,6 +33,13 @@ public class ListActivity extends Activity {
     ArrayList<String> myArrayList = new ArrayList<>();
     DatabaseReference mRef;
 
+    public void back(View view) {
+        Intent intent = new Intent(ListActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+        return;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +52,6 @@ public class ListActivity extends Activity {
         listView.setAdapter(myArrayAdapter);
         mAuth = FirebaseAuth.getInstance();
         CurrentUId = mAuth.getCurrentUser().getUid();
-
-        Log.d("uid", CurrentUId);
 
         mRef = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right");
         mRef.addChildEventListener(new ChildEventListener() {
