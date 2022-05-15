@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -57,8 +58,8 @@ public class ListActivity extends Activity {
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Map<String,String> map = (Map) snapshot.getValue();
-                String title=map.get("title").toString();
+                Map<String, String> map = (Map) snapshot.getValue();
+                String title = map.get("title").toString();
                 myArrayList.add(title);
                 myArrayAdapter.notifyDataSetChanged();
             }
@@ -81,6 +82,15 @@ public class ListActivity extends Activity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListActivity.this, MovieInfoActivity.class);
+                intent.putExtra("Description", listView.getItemAtPosition(position).toString());
+                startActivity(intent);
+                finish();
             }
         });
     }
