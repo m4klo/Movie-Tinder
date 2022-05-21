@@ -1,5 +1,8 @@
 package com.example.tinder_movie;
 
+import static com.example.tinder_movie.GenreActivity.setURL;
+import static com.example.tinder_movie.GenreActivity.setURLorder;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -31,8 +34,8 @@ import java.util.Map;
 
 public class MainActivity extends Activity {
 
-    String API_URL  = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset=50&type=movie&limit=50";
     ProgressDialog progressDialog;
+
     private arrayAdapter arrayAdapter;
 
     private FirebaseAuth mAuth;
@@ -141,11 +144,11 @@ public class MainActivity extends Activity {
         CurrentUId = mAuth.getCurrentUser().getUid();
 
         rowitems = new ArrayList<movies>();
-        new syncData().execute();
         movies movie=new movies();
         movie.setTitle("Swipe left or right!");
         movie.setNetflixId("0");
         rowitems.add(movie);
+        new syncData().execute();
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowitems);
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
@@ -189,7 +192,12 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-
+                if(rowitems.isEmpty()) {
+                    setURLorder();
+                    setURL();
+                    finish();
+                    startActivity(getIntent());
+                }
             }
 
             @Override

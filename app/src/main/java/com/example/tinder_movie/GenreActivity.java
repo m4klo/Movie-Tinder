@@ -3,6 +3,7 @@ package com.example.tinder_movie;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,12 +12,16 @@ import android.widget.Button;
 public class GenreActivity extends Activity {
     private Button Sci_fi, Horror, Fantasy;
     private static String url;
+    private static int urlp1;
+    private static int genre;
 
 
     static String getURL()
     {
         return url;
     }
+    public static void setURL() {url="https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset="+urlp1+"&order_by=date&genre_list="+genre+"&type=movie";};
+    public static void setURLorder() { urlp1=urlp1+100;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,9 @@ public class GenreActivity extends Activity {
         Sci_fi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?limit=100&order_by=date&genre_list=108533&type=movie";
+                genre=108533;
+                urlp1=1;
+                url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset="+urlp1+"&order_by=date&genre_list="+genre+"&type=movie";
                 Intent intent = new Intent(GenreActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -40,7 +47,9 @@ public class GenreActivity extends Activity {
         Horror.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?limit=100&order_by=date&genre_list=8711&type=movie";
+                genre=8711;
+                urlp1=1;
+                url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset="+urlp1+"&order_by=date&genre_list="+genre+"&type=movie";
                 Intent intent = new Intent(GenreActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -50,7 +59,9 @@ public class GenreActivity extends Activity {
         Fantasy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?limit=100&order_by=date&genre_list=9744&type=movie";
+                genre=9744;
+                urlp1=1;
+                url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?&offset="+urlp1+"&order_by=date&genre_list="+genre+"&type=movie";
                 Intent intent = new Intent(GenreActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
