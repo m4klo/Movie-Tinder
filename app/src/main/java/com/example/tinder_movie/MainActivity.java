@@ -8,14 +8,18 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import org.json.JSONArray;
@@ -115,6 +119,9 @@ public class MainActivity extends Activity {
       @Override
       protected void onPostExecute(String s) {
           super.onPostExecute(s);
+          CurrentUId = mAuth.getCurrentUser().getUid();
+          DatabaseReference currentUserright = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right");
+          DatabaseReference currentUserleft = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left");
           progressDialog.dismiss();
           try {
               JSONObject jsonObject = new JSONObject(s);
@@ -123,9 +130,58 @@ public class MainActivity extends Activity {
               for (int i = 0; i < jsonArray.length(); i++) {
                   movies movie = new movies();
                   JSONObject results = jsonArray.getJSONObject(i);
-                  movie.setTitle(results.getString("title"));
-                  movie.setNetflixId(results.getString("netflix_id"));
-                  rowitems.add(movie);
+                  String strtitle = results.getString("title").replaceAll("[#$.]", " ");
+                  movie.setTitle(strtitle);
+                  currentUserright.child(movie.getTitle()).addListenerForSingleValueEvent(new ValueEventListener() {
+                      @Override
+                      public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                          if (!dataSnapshot.exists()) {
+                              currentUserleft.child(movie.getTitle()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                  @Override
+                                  public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                      if (!dataSnapshot.exists()) {
+                                          try {
+                                              movie.setNetflixId(results.getString("netflix_id"));
+                                          } catch (JSONException e) {
+                                              e.printStackTrace();
+                                          }
+                                          rowitems.add(movie);
+                                      }
+                                  }
+
+                                  @Override
+                                  public void onCancelled(@androidx.annotation.NonNull DatabaseError error) {
+
+                                  }
+                              });
+                          }
+                          else{
+                              currentUserright.child(movie.getTitle()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                  @Override
+                                  public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                      if (!dataSnapshot.exists()) {
+                                          try {
+                                              movie.setNetflixId(results.getString("netflix_id"));
+                                          } catch (JSONException e) {
+                                              e.printStackTrace();
+                                          }
+                                          rowitems.add(movie);
+                                      }
+                                  }
+
+                                  @Override
+                                  public void onCancelled(@androidx.annotation.NonNull DatabaseError error) {
+
+                                  }
+                              });
+                          }
+                      }
+
+                      @Override
+                      public void onCancelled(@androidx.annotation.NonNull DatabaseError error) {
+
+                      }
+                  });
               }
           } catch(JSONException e){
               e.printStackTrace();
@@ -165,13 +221,11 @@ public class MainActivity extends Activity {
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
                 String netflixid = rowitems.get(0).getNetflixId();
                 String title = rowitems.get(0).getTitle();
-                if(!title.contains("#")) {
-                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left").child(title);
-                    Map movieInfo = new HashMap<>();
-                    movieInfo.put("title", title);
-                    movieInfo.put("netflixid", netflixid);
-                    currentUserDb.updateChildren(movieInfo);
-                }
+                DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left").child(title);
+                Map movieInfo = new HashMap<>();
+                movieInfo.put("title", title);
+                movieInfo.put("netflixid", netflixid);
+                currentUserDb.updateChildren(movieInfo);
                 rowitems.remove(0);
             }
 
@@ -180,13 +234,11 @@ public class MainActivity extends Activity {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
                 String netflixid = rowitems.get(0).getNetflixId();
                 String title = rowitems.get(0).getTitle();
-                if(!title.contains("#")) {
-                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right").child(title);
-                    Map movieInfo = new HashMap<>();
-                    movieInfo.put("title", title);
-                    movieInfo.put("netflixid", netflixid);
-                    currentUserDb.updateChildren(movieInfo);
-                }
+                DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right").child(title);
+                Map movieInfo = new HashMap<>();
+                movieInfo.put("title", title);
+                movieInfo.put("netflixid", netflixid);
+                currentUserDb.updateChildren(movieInfo);
                 rowitems.remove(0);
             }
 
