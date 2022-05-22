@@ -6,6 +6,10 @@ public class movies {
 
     private String NetflixId;
 
+    private String imgURL;
+
+    private String description;
+
 
     public void setTitle(String title) {
         this.title = title;
@@ -25,4 +29,12 @@ public class movies {
     public void setNetflixId(String netflixId) {
         this.NetflixId = netflixId;
     }
+
+    public void setImgURL(String image)  {this.imgURL=image;}
+
+    public String getImgURL() { return imgURL;}
+
+    public void setDescription(String dscrpt) {this.description=dscrpt;}
+
+    public String getDescription() {return description;}
 }

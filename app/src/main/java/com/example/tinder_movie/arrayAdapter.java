@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -25,8 +28,12 @@ public class arrayAdapter extends ArrayAdapter<movies> {
         }
 
         TextView title = (TextView) convertView.findViewById(R.id.title);
+        ImageView image = (ImageView) convertView.findViewById(R.id.image);
+
 
         title.setText(card_item.getTitle());
+        Glide.with(convertView.getContext()).load(card_item.getImgURL()).into(image);
+
         return convertView;
     }
 }
