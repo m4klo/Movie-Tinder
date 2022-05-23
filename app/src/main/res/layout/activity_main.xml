@@ -5,31 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Signout"
-    android:onClick="logoutUser"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="openLibrary"
-        android:text="Favourite"
-        android:translationX="300dp"
-        tools:layout_editor_absoluteX="295dp"
-        tools:layout_editor_absoluteY="0dp" />
 
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="68dp"
-        android:background="#ffeee9e2"
+        android:background="@color/black"
         android:rotationX="0"
         app:layout_constraintTop_toTopOf="parent"
         app:rotation_degrees="15.5"
         tools:context=".MyActivity"
-        tools:layout_editor_absoluteX="-76dp" />
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/red"
+        android:onClick="openLibrary"
+        android:text="Favourite"
+        android:translationX="150dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/red"
+        android:onClick="logoutUser"
+        android:text="Signout"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

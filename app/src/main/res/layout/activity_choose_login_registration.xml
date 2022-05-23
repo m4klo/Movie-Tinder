@@ -5,15 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseLoginRegistrationActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black"
+    >
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:text="login" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="login"
-        android:id="@+id/login"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
         android:text="register"
         android:id="@+id/register"/>
 </LinearLayout>

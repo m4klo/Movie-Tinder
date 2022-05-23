@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationX="100dp"
-        android:text="Fantasy"
+        android:id="@+id/fantasy"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:backgroundTint="@color/red"
+        android:layout_marginTop="10dp"
         android:onClick="fantasy"
-        android:id="@+id/fantasy"/>
+        android:text="Fantasy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationX="200dp"
-        android:text="Sci-fi"
+        android:id="@+id/sci_fi"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:backgroundTint="@color/red"
         android:onClick="sci-fi"
-        android:id="@+id/sci_fi"/>
+        android:text="Sci-fi"
+        android:translationY="160dp"
+        />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationX="300dp"
-        android:text="Horror"
+        android:id="@+id/horror"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:backgroundTint="@color/red"
+        android:translationY="310dp"
         android:onClick="horror"
-        android:id="@+id/horror"/>
+        android:text="Horror" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
