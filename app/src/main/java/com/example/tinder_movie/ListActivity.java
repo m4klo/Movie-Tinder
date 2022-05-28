@@ -88,7 +88,7 @@ public class ListActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListActivity.this, MovieInfoActivity.class);
-                intent.putExtra("Description", listView.getItemAtPosition(position).toString());
+                intent.putExtra("title", listView.getItemAtPosition(position).toString());
                 startActivity(intent);
                 finish();
             }
