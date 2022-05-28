@@ -15,24 +15,65 @@
         app:layout_constraintTop_toTopOf="parent"
         app:rotation_degrees="15.5"
         tools:context=".MyActivity"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:id="@+id/favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/red"
         android:onClick="openLibrary"
         android:text="Favourite"
-        android:translationX="150dp" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        app:layout_constraintDimensionRatio="3:1"
+        app:layout_constraintLeft_toRightOf="@+id/signout"
+        app:layout_constraintRight_toLeftOf="@id/back"
+        app:layout_constraintTop_toTopOf="@id/guideline1"
+
+        />
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:id="@+id/signout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/red"
         android:onClick="logoutUser"
         android:text="Signout"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintDimensionRatio="3:1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="@id/guideline1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/favourite"
+         />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:onClick="openGenre"
+        android:text="Back"
+        app:layout_constraintDimensionRatio="3:1"
+        app:layout_constraintLeft_toRightOf="@id/favourite"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

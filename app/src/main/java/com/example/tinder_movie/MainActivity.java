@@ -1,5 +1,6 @@
 package com.example.tinder_movie;
 
+import static com.example.tinder_movie.GenreActivity.getURL;
 import static com.example.tinder_movie.GenreActivity.setURL;
 import static com.example.tinder_movie.GenreActivity.setURLorder;
 
@@ -63,6 +64,12 @@ public class MainActivity extends Activity {
     }
     public void openLibrary(View view) {
         Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        startActivity(intent);
+        finish();
+        return;
+    }
+    public void openGenre(View view) {
+        Intent intent = new Intent(MainActivity.this, GenreActivity.class);
         startActivity(intent);
         finish();
         return;

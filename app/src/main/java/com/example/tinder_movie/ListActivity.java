@@ -35,7 +35,7 @@ public class ListActivity extends Activity {
     DatabaseReference mRef;
 
     public void back(View view) {
-        Intent intent = new Intent(ListActivity.this, MainActivity.class);
+        Intent intent = new Intent(ListActivity.this, GenreActivity.class);
         startActivity(intent);
         finish();
         return;
