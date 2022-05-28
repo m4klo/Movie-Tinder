@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
@@ -36,7 +37,8 @@ public class arrayAdapter extends ArrayAdapter<movies> {
 
         description.setText(card_item.getDescription());
         title.setText(card_item.getTitle());
-        Glide.with(convertView.getContext()).load(card_item.getImgURL()).into(image);
+
+        Glide.with(convertView.getContext()).load(card_item.getImgURL()).override(400,342).into(image);
 
         return convertView;
     }

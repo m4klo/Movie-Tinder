@@ -46,7 +46,7 @@
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="342dp"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/description"

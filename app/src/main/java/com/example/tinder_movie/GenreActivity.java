@@ -36,7 +36,7 @@ public class GenreActivity extends Activity {
             @Override
             public void onClick(View view) {
                 genre=108533;
-                urlp1=1;
+                urlp1=0;
                 url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset="+urlp1+"&order_by=date&genre_list="+genre+"&type=movie";
                 Intent intent = new Intent(GenreActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -48,7 +48,7 @@ public class GenreActivity extends Activity {
             @Override
             public void onClick(View view) {
                 genre=8711;
-                urlp1=1;
+                urlp1=0;
                 url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?offset="+urlp1+"&order_by=date&genre_list="+genre+"&type=movie";
                 Intent intent = new Intent(GenreActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -60,7 +60,7 @@ public class GenreActivity extends Activity {
             @Override
             public void onClick(View view) {
                 genre=9744;
-                urlp1=1;
+                urlp1=0;
                 url = "https://unogs-unogs-v1.p.rapidapi.com/search/titles?&offset="+urlp1+"&order_by=date&genre_list="+genre+"&type=movie";
                 Intent intent = new Intent(GenreActivity.this, MainActivity.class);
                 startActivity(intent);
