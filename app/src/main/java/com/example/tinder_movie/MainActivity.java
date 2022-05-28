@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -124,7 +123,6 @@ public class MainActivity extends Activity {
           DatabaseReference currentUserright = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right");
           DatabaseReference currentUserleft = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left");
           progressDialog.dismiss();
-          String avoid = "& 39;";
           try {
               JSONObject jsonObject = new JSONObject(s);
               JSONArray jsonArray;
@@ -133,8 +131,9 @@ public class MainActivity extends Activity {
                   movies movie = new movies();
                   JSONObject results = jsonArray.getJSONObject(i);
                   String strtitle = results.getString("title").replaceAll("[#$.]", " ");
-                  String strtitle2 = strtitle.replace(avoid, "'");
-                  movie.setTitle(strtitle2);
+                  String strtitle2 = strtitle.replace("& 39;", "'");
+                  String strtitle3  = strtitle2.replace("&#39;", "'");
+                  movie.setTitle(strtitle3);
                   currentUserright.child(movie.getTitle()).addListenerForSingleValueEvent(new ValueEventListener() {
                       @Override
                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -145,9 +144,10 @@ public class MainActivity extends Activity {
                                       if (!dataSnapshot.exists()) {
                                           try {
                                               String strdescripton = results.getString("synopsis").replaceAll( "&#39;", "'");
+                                              String strdescripton2 = strdescripton.replaceAll( "&#39;", "'");
                                               movie.setNetflixId(results.getString("netflix_id"));
                                               movie.setImgURL(results.getString("img"));
-                                              movie.setDescription(strdescripton);
+                                              movie.setDescription(strdescripton2);
                                           } catch (JSONException e) {
                                               e.printStackTrace();
                                           }
