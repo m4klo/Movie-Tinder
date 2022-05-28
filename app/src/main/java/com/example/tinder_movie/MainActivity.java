@@ -120,8 +120,8 @@ public class MainActivity extends Activity {
       protected void onPostExecute(String s) {
           super.onPostExecute(s);
           CurrentUId = mAuth.getCurrentUser().getUid();
-          DatabaseReference currentUserright = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right");
-          DatabaseReference currentUserleft = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left");
+          DatabaseReference currentUserright = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("approved");
+          DatabaseReference currentUserleft = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("discarded");
           progressDialog.dismiss();
           try {
               JSONObject jsonObject = new JSONObject(s);
@@ -226,9 +226,9 @@ public class MainActivity extends Activity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "discarded", Toast.LENGTH_SHORT).show();
                 String title = rowitems.get(0).getTitle();
-                DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("left").child(title);
+                DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("discarded").child(title);
                 Map movieInfo = new HashMap<>();
                 movieInfo.put("title", title);
                 currentUserDb.updateChildren(movieInfo);
@@ -237,18 +237,22 @@ public class MainActivity extends Activity {
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
-                String netflixid = rowitems.get(0).getNetflixId();
-                String title = rowitems.get(0).getTitle();
-                String img = rowitems.get(0).getImgURL();
-                String description = rowitems.get(0).getDescription();
-                 DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right").child(title);
-                Map movieInfo = new HashMap<>();
-                movieInfo.put("title", title);
-                movieInfo.put("netflixid", netflixid);
-                movieInfo.put("description", description);
-                movieInfo.put("img", img);
-                currentUserDb.updateChildren(movieInfo);
+
+                    String title = rowitems.get(0).getTitle();
+                Toast.makeText(MainActivity.this, "approved", Toast.LENGTH_SHORT).show();
+                if(title!="Swipe left or right!") {
+                    String netflixid = rowitems.get(0).getNetflixId();
+                    String img = rowitems.get(0).getImgURL();
+                    String description = rowitems.get(0).getDescription();
+                    DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("approved").child(title);
+                    Map movieInfo = new HashMap<>();
+                    movieInfo.put("title", title);
+                    movieInfo.put("netflixid", netflixid);
+                    movieInfo.put("description", description);
+                    movieInfo.put("img", img);
+                    currentUserDb.updateChildren(movieInfo);
+
+                }
                 rowitems.remove(0);
             }
 

@@ -47,7 +47,7 @@ public class MovieInfoActivity extends Activity {
         String title= (String) b.get("title");
 
         String URL;
-        mRef = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("right").child(title).child("title");
+        mRef = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("approved").child(title).child("title");
         Log.d("wtf", mRef.toString());
         TextView titles = (TextView) findViewById(R.id.titleinfo);
         ImageView image = (ImageView) findViewById(R.id.imageinfo);
