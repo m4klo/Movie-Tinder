@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TinderMovie">
         <activity android:name=".MainActivity"/>
-        <activity android:name=".ChooseLoginRegistrationActivity"
+        <activity android:name=".LoginActivity"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,6 @@
 
 
         </activity>
-        <activity android:name=".LoginActivity"/>
         <activity android:name=".RegistrationActivity"/>
         <activity android:name=".ListActivity"/>
         <activity android:name=".GenreActivity"/>

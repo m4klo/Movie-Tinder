@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,12 +18,11 @@
         app:layout_constraintTop_toTopOf="@id/guideline3"
         app:layout_constraintBottom_toBottomOf="@id/guideline4" />
 
-    <ListView
-        android:id="@+id/listview1"
+    <StackView
+        android:id="@+id/stackview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
-        android:background="@color/white"></ListView>
+        android:background="@color/black"></StackView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -52,4 +51,4 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.06" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

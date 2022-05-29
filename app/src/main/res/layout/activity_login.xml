@@ -39,15 +39,27 @@
         app:layout_constraintLeft_toLeftOf="@id/guideline3"
         app:layout_constraintRight_toRightOf="@id/guideline4"
         app:layout_constraintTop_toBottomOf="@id/password" />
+
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/mwreg"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:src="@drawable/mw"
         app:layout_constraintBottom_toBottomOf="@id/guideline8"
         app:layout_constraintLeft_toLeftOf="@id/guideline5"
         app:layout_constraintRight_toRightOf="@id/guideline6"
-        app:layout_constraintTop_toTopOf="@id/guideline7"
-        android:src="@drawable/mw" />
+        app:layout_constraintTop_toTopOf="@id/guideline7" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:text="Not registered? Click here..."
+        android:textSize="20sp"
+        android:textColor="#939090"
+        app:layout_constraintTop_toBottomOf="@id/guideline11"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -62,6 +74,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.6" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
@@ -103,6 +116,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

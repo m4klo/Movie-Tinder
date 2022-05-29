@@ -17,11 +17,11 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="321dp"
-        android:layout_height="494dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:elevation="2dp"
-        app:cardCornerRadius="4dp">
+        app:cardCornerRadius="50dp">
 
         <LinearLayout
             android:layout_width="285dp"

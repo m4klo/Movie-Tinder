@@ -3,8 +3,10 @@ package com.example.tinder_movie;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,7 @@ import java.util.Map;
 public class RegistrationActivity extends AppCompatActivity {
 
     private Button mRegister;
+    private TextView mText;
     private EditText mEmail, mPassword;
 
     private FirebaseAuth mAuth;
@@ -49,6 +52,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
+        mText = (TextView) findViewById(R.id.textView2);
 
         mRegister.setOnClickListener(view -> {
             final String email = mEmail.getText().toString();
@@ -63,6 +67,15 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
 
             });
+        });
+        mText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
         });
     }
     @Override

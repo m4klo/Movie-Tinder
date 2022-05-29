@@ -19,7 +19,7 @@ public class GenreActivity extends Activity {
 
     public void logoutUser(View view) {
         mAuth.signOut();
-        Intent intent = new Intent (GenreActivity.this, ChooseLoginRegistrationActivity.class);
+        Intent intent = new Intent (GenreActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
         return;

@@ -16,7 +16,8 @@
         <ListView
             android:id="@+id/listview"
             android:layout_width="322dp"
-            android:layout_height="625dp" />
+            android:layout_height="625dp"
+            tools:textSize="60dp"/>
 
     </LinearLayout>
 
