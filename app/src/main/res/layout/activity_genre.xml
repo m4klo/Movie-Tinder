@@ -13,11 +13,11 @@
         android:backgroundTint="@color/red"
         android:onClick="openLibrary"
         android:text="Favourite"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toBottomOf="@id/guideline6"
-        app:layout_constraintDimensionRatio="3:1"
         app:layout_constraintLeft_toRightOf="@+id/signout"
         app:layout_constraintRight_toRightOf="@id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/guideline5"/>
+        app:layout_constraintTop_toTopOf="@id/guideline5" />
 
     <Button
         android:id="@+id/signout"
@@ -26,8 +26,8 @@
         android:backgroundTint="@color/red"
         android:onClick="logoutUser"
         android:text="Signout"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toBottomOf="@id/guideline6"
-        app:layout_constraintDimensionRatio="3:1"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
         app:layout_constraintRight_toLeftOf="@id/favourite"
         app:layout_constraintTop_toTopOf="@id/guideline5" />
@@ -40,13 +40,13 @@
         android:backgroundTint="@color/red"
         android:onClick="fantasy"
         android:text="Fantasy"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toTopOf="@id/drama"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
         app:layout_constraintRight_toLeftOf="@id/sci_fi"
-        app:layout_constraintTop_toTopOf="@id/guideline3"
 
-        />
+        app:layout_constraintTop_toTopOf="@id/guideline3" />
 
     <Button
         android:id="@+id/sci_fi"
@@ -56,13 +56,13 @@
         android:backgroundTint="@color/red"
         android:onClick="sci_fi"
         android:text="Sci-fi"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toTopOf="@id/action"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toRightOf="@id/fantasy"
         app:layout_constraintRight_toLeftOf="@id/horror"
-        app:layout_constraintTop_toTopOf="@id/guideline3"
 
-        />
+        app:layout_constraintTop_toTopOf="@id/guideline3" />
 
     <Button
         android:id="@+id/horror"
@@ -72,13 +72,13 @@
         android:backgroundTint="@color/red"
         android:onClick="horror"
         android:text="Horror"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toTopOf="@id/adventures"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toRightOf="@id/sci_fi"
         app:layout_constraintRight_toRightOf="@id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/guideline3"
 
-        />
+        app:layout_constraintTop_toTopOf="@id/guideline3" />
 
     <Button
         android:id="@+id/drama"
@@ -88,14 +88,14 @@
         android:backgroundTint="@color/red"
         android:onClick="drama"
         android:text="Drama"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toTopOf="@id/comedias"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
         app:layout_constraintRight_toLeftOf="@id/action"
-        app:layout_constraintTop_toBottomOf="@id/fantasy"
 
 
-        />
+        app:layout_constraintTop_toBottomOf="@id/fantasy" />
 
 
     <Button
@@ -106,14 +106,14 @@
         android:backgroundTint="@color/red"
         android:onClick="action"
         android:text="Action"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toTopOf="@id/anime"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toRightOf="@id/drama"
         app:layout_constraintRight_toLeftOf="@id/adventures"
-        app:layout_constraintTop_toBottomOf="@id/sci_fi"
 
 
-        />
+        app:layout_constraintTop_toBottomOf="@id/sci_fi" />
 
     <Button
         android:id="@+id/adventures"
@@ -123,14 +123,14 @@
         android:backgroundTint="@color/red"
         android:onClick="adventures"
         android:text="Adventure"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toTopOf="@id/documentaries"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toRightOf="@id/action"
         app:layout_constraintRight_toRightOf="@id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/horror"
 
 
-        />
+        app:layout_constraintTop_toBottomOf="@id/horror" />
 
     <Button
         android:id="@+id/comedias"
@@ -140,13 +140,13 @@
         android:backgroundTint="@color/red"
         android:onClick="comedias"
         android:text="Comedia"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toBottomOf="@id/guideline4"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
         app:layout_constraintRight_toLeftOf="@id/anime"
-        app:layout_constraintTop_toBottomOf="@id/drama"
 
-        />
+        app:layout_constraintTop_toBottomOf="@id/drama" />
 
     <Button
         android:id="@+id/anime"
@@ -156,13 +156,13 @@
         android:backgroundTint="@color/red"
         android:onClick="anime"
         android:text="Anime"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toBottomOf="@id/guideline4"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toRightOf="@id/comedias"
         app:layout_constraintRight_toLeftOf="@id/documentaries"
-        app:layout_constraintTop_toBottomOf="@id/action"
 
-        />
+        app:layout_constraintTop_toBottomOf="@id/action" />
 
     <Button
         android:id="@+id/documentaries"
@@ -172,13 +172,23 @@
         android:backgroundTint="@color/red"
         android:onClick="documentaries"
         android:text="Documentaries"
+        android:textColor="#C5C1C1"
         app:layout_constraintBottom_toBottomOf="@id/guideline4"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toRightOf="@id/anime"
         app:layout_constraintRight_toRightOf="@id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/adventures"
+        app:layout_constraintTop_toBottomOf="@id/adventures" />
 
-        />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline10"
+        app:layout_constraintLeft_toLeftOf="@id/guideline7"
+        app:layout_constraintRight_toRightOf="@id/guideline8"
+        app:layout_constraintTop_toTopOf="@id/guideline9"
+        android:src="@drawable/mw" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -221,5 +231,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.23" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
