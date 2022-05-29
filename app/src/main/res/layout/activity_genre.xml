@@ -54,7 +54,7 @@
         android:layout_height="0dp"
         android:layout_margin="5dp"
         android:backgroundTint="@color/red"
-        android:onClick="sci-fi"
+        android:onClick="sci_fi"
         android:text="Sci-fi"
         app:layout_constraintBottom_toTopOf="@id/action"
         app:layout_constraintDimensionRatio="1:1"

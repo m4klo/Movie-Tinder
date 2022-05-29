@@ -153,7 +153,7 @@ public class MainActivity extends Activity {
                                               String strdescripton = results.getString("synopsis").replaceAll( "&#39;", "'");
                                               String strdescripton2 = strdescripton.replaceAll( "&#39;", "'");
                                               movie.setNetflixId(results.getString("netflix_id"));
-                                              movie.setImgURL(results.getString("img"));
+                                              movie.setImg(results.getString("img"));
                                               movie.setDescription(strdescripton2);
                                           } catch (JSONException e) {
                                               e.printStackTrace();
@@ -175,7 +175,7 @@ public class MainActivity extends Activity {
                                       if (!dataSnapshot.exists()) {
                                           try {
                                               movie.setNetflixId(results.getString("netflix_id"));
-                                              movie.setImgURL(results.getString("img"));
+                                              movie.setImg(results.getString("img"));
                                               movie.setDescription(results.getString("synopsis"));
                                           } catch (JSONException e) {
                                               e.printStackTrace();
@@ -249,7 +249,7 @@ public class MainActivity extends Activity {
                 Toast.makeText(MainActivity.this, "approved", Toast.LENGTH_SHORT).show();
                 if(title!="Swipe left or right!") {
                     String netflixid = rowitems.get(0).getNetflixId();
-                    String img = rowitems.get(0).getImgURL();
+                    String img = rowitems.get(0).getImg();
                     String description = rowitems.get(0).getDescription();
                     DatabaseReference currentUserDb = FirebaseDatabase.getInstance("https://movie-tinder-f5289-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("Users").child(CurrentUId).child("approved").child(title);
                     Map movieInfo = new HashMap<>();

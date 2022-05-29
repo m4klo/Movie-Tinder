@@ -38,7 +38,7 @@ public class arrayAdapter extends ArrayAdapter<movies> {
         description.setText(card_item.getDescription());
         title.setText(card_item.getTitle());
 
-        Glide.with(convertView.getContext()).load(card_item.getImgURL()).override(400,342).into(image);
+        Glide.with(convertView.getContext()).load(card_item.getImg()).override(400,342).into(image);
 
         return convertView;
     }

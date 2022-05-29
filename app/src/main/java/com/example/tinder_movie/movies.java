@@ -6,7 +6,7 @@ public class movies {
 
     private String NetflixId;
 
-    private String imgURL;
+    private String img;
 
     private String description;
 
@@ -30,9 +30,13 @@ public class movies {
         this.NetflixId = netflixId;
     }
 
-    public void setImgURL(String image)  {this.imgURL=image;}
+    public String getImg() {
+        return img;
+    }
 
-    public String getImgURL() { return imgURL;}
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public void setDescription(String dscrpt) {this.description=dscrpt;}
 
